@@ -56,7 +56,7 @@ var app = new Vue({
 		},
 		resultScore() {
 			this.traits.en.forEach((feature, idx) => {
-				this.questionList.forEach((question) => {
+				this.questionList.forEach(question => {
 					if (feature === question.category) {
 						this.fiveFeatureScore[feature].score += question.score;
 					}
