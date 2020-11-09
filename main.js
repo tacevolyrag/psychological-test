@@ -22,7 +22,7 @@ var app = new Vue({
 					this.traits = res.data.traits;
 					this.degree = res.data.degree;
 					this.traits.en.forEach((sort) => {
-						// 五個方面屬性題目存放在 problemList
+						// 題目存放在 problemList
 						res.data.problemList[sort].problems.forEach((problem) => {
 							this.questionList.push({
 								category: problem.category,
@@ -31,7 +31,7 @@ var app = new Vue({
 								problem: problem.problem,
 							})
 						});
-						// 五個方面屬性分數特徵
+						// 五個方面屬性分數特徵放在物件
 						this.fiveFeatureScore[sort] = {
 							namezh: res.data.problemList[sort].name,
 							nameen: sort,
@@ -64,14 +64,19 @@ var app = new Vue({
 			});
 		},
 		reset() {
-			this.pageNum = 0;
-			this.result = 0;
-			this.questionList.forEach(question => {
-				question.score = 0;
-			})
-			Object.keys(this.fiveFeatureScore).forEach(feature => {
-				this.fiveFeatureScore[feature].score = 0;
-			})
+			if (this.result === this.traits.en.length - 1) {
+				const restart = confirm("確定要重新測試嗎？");
+				if (restart) {
+					this.pageNum = 0;
+					this.result = 0;
+					this.questionList.forEach(question => {
+						question.score = 0;
+					})
+					Object.keys(this.fiveFeatureScore).forEach(feature => {
+						this.fiveFeatureScore[feature].score = 0;
+					})
+				}
+			}
 		}
 	},
 	created() {

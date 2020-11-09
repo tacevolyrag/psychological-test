@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="feature-des" v-for="(name,key,idx) in fiveFeatureScore" :key="name.namezh">
-					<div class="d-flex" v-if="idx === result">
+					<div class="des-area" v-if="idx === result">
 						<div class="des">
 							<h2>{{ name.namezh }}</h2>
 							<p>{{ name.nameen }}</p>
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<div class="result-content" v-for="(name,key,idx) in fiveFeatureScore" :key="name.namezh">
-				<div class="d-flex content" v-if="idx === result">
+				<div class="content" v-if="idx === result">
 					<div v-if="name.score > degree.high">
 						<h2>高</h2>
 						<p>{{ name.high }}</p>
@@ -115,7 +115,7 @@
 						<a href="#" v-if="result < traits.en.length -1" @click.prevent="result += 1">
 							<span>下一項：{{ traits.zh[idx + 1] }}</span>
 							<i class="fas fa-arrow-right"></i></a>
-						<a href="#" v-if="result === traits.en.length -1" @click.prevent="reset"><b>再測一次</b></span>
+						<a href="#" v-if="result === traits.en.length -1" @click.prevent="reset"><span>再測一次</span></span>
 							<i class="fas fa-arrow-right"></i></a>
 					</div>
 				</div>

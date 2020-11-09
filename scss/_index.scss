@@ -8,7 +8,8 @@ $fz-xl: 64px;
 $fz-l: 32px;
 $fz-m: 24px;
 $questionBgc: #4F61FF;
-
+$table-media: 1140px;
+$phone-media: 767px;
 .header{
 	background-image: url('https://images.unsplash.com/photo-1489925730899-0c751c43cb6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
 	height: 50vh;
@@ -158,6 +159,9 @@ $questionBgc: #4F61FF;
 					color: #fff;
 					padding: 5px 0;
 					display: block;
+					&:hover{
+						border-bottom: 4px solid $questionBgc;
+					}
 				}
 			}
 		}
@@ -169,12 +173,18 @@ $questionBgc: #4F61FF;
 		position: absolute;
 		bottom: 24px;
 		display: flex;
+		.des-area{
+			display: flex;
+		}
 		.des{
 			width: 200px;
 			color: #fff;
 			font-size: 48px;
 			p{
 				font-size: $fz-m;
+				&:first-letter{
+					text-transform: uppercase;
+				}
 			}
 		}
 		.des-content{
@@ -205,14 +215,225 @@ $questionBgc: #4F61FF;
 	}
 		a{
 			position: absolute;
-			right:	270px;
+			right: 270px;
 			bottom: 100px;
 			text-decoration: none;
 			font-size: $fz-l;
-			margin-top: 50px;
 			span{
 				color: #000;
 				margin-right: 8px;
 			}
 		}
+}
+@media screen and (max-width: 1560px) {
+	.result{
+		.feature-header{
+			padding: 24px 100px;
+		}
+		.feature-nav{
+			flex-direction: column;
+			text-align: center;
+			.feature-title{
+				margin-bottom: 25px;
+			}
+		}
+		.feature-five{
+			ul{
+				justify-content: space-around;
+				margin-bottom: 75px;
+			}
+		}
+		.feature-des{
+			position: static;
+			justify-content: center;
+		}
+	}
+	.result-content{
+		a{
+			position: static;
+			right: 0;
+			bottom: 0;
+			float: right;
+			margin-top: 0;
+		}
+	}
+}
+
+@media screen and (max-width: $table-media){
+	.title{
+		margin-left: 100px;
+		margin-top: 50px;
+	}
+	.test{
+		margin-right: 50px;
+	}
+	.question{
+		.question__area{
+			.question__topic{
+				margin-left: 0;
+				margin-top: 100px;
+			}
+		}
+	}
+	.result{
+		.feature-five{
+			ul{
+				li{
+					margin-left: 0;
+				}
+			}
+		}
+		.feature-des{
+			justify-content: space-around;
+		}
+	}
+	.result-content{
+		.content{
+			padding: 20px 150px 0 150px;
+			a{
+				margin-top: 0;
+			}
+		}
+	}
+}
+@media screen and (max-width: 940px){
+	.test{
+		float: none;
+		width: 450px;
+		margin: 0 auto;
+		.text-area{
+			float: none;
+			margin-bottom: 30px;
+		}
+	}
+	.title{
+		margin-bottom: 20px;
+	}
+}
+@media screen and (max-width: $phone-media){
+	.header{
+		height: 40vh;
+	}
+	.title{
+		margin-left: 0;
+		text-align: center;
+		h1{
+			font-size: 32px;
+			text-align: left;
+		}
+		h3{
+			margin-left: 0;
+			font-size: 10px;
+		}
+	}
+	.test{
+		width: 300px;
+		.text-area{
+			margin-bottom: 0;
+			p{
+				font-size: 14px;
+			}
+		}
+		.testOpen{
+			margin-left: 0;
+			padding: 0 80px;
+			margin-top: 50px;
+		}
+	}
+	.question{
+		.question__area{
+			height: 30vh;
+			padding-top: 0;
+			button{
+				width: 40px;
+				height: 40px;
+				font-size: 16px;
+				position: relative;
+				left: -15px;
+			}
+			.question__topic{
+				margin-top: 0;
+				h2{
+					font-size: 28px;
+				}
+				h3{
+					font-size: 24px;
+					margin: 0;
+					padding: 0 45px;
+				}
+			}
+		}
+		.question__option{
+			padding-left: 0;
+			label{
+				margin-left: 60px;
+				margin-right: 30px;
+				text-indent: -37px;
+				span{
+					font-size: 16px;
+				}
+			}
+			.qaNum{
+				top: 5px;
+				right: 20px;
+				font-size: 22px;
+			}
+			.option{
+				justify-content: flex-start;
+				margin-top: 70px;
+				height: auto;
+				padding-bottom: 0;
+			}
+		}
+		.nextQuestion{
+			margin-top: 0px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			font-size: 22px;
+		}
+	}
+	.result{
+		.feature-header{
+			padding: 24px 0;
+		}
+		.feature-five{
+			ul{
+				margin-bottom: 50px;
+			}
+		}
+		.feature-des{
+			.des-area{
+				display: block;
+				.des{
+					width: auto;
+					text-align: center;
+					h2{
+						font-size: 24px;
+					}
+					p{
+						font-size: 14px;
+					}
+				}
+			}
+			.des-content{
+				width: auto;
+			}
+		}
+	}
+	.result-content{
+		.content{
+			padding: 20px 40px;
+			h2{
+				font-size: 40px;
+				margin: 0;
+			}
+			p{
+				font-size: 16px;
+			}
+			span{
+				font-size: 18px;
+			}
+		}
+	}
 }
