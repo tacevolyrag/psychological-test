@@ -51,13 +51,15 @@ $questionBgc: #4F61FF;
 		color: #FFF;
 	}
 }
-// 題目區
+// 題目
 .question{
 	.question__area{
 		background-color: rgba(79,97,255,.2);
 		height: 100vh;
+		padding-top: 15px;
 		button{
-			padding: 16px 24px;
+			width: 100px;
+			height: 100px;
 			color: #fff;
 			background-color: $questionBgc;
 			font-size: 30px;
@@ -77,8 +79,22 @@ $questionBgc: #4F61FF;
 		}
 	}
 	.question__option{
+		.qaNum{
+			float: right;
+			position: relative;
+			top: 48px;
+			right: 96px;
+			font-style: italic;
+			font-size: $fz-m;
+			color: #00000098;
+		}
+		.option{
+			height: 100vh;
+			justify-content: flex-end;
+			padding-bottom: 15px;
+		}
 		label{
-			margin-left: 75px;
+			margin-left: 60px;
 			input{
 				width: 25px;
 				height: 25px;
@@ -92,15 +108,111 @@ $questionBgc: #4F61FF;
 		}
 	}
 	.nextQuestion{
-		width: 100%;
+		max-width: 860px;
+		text-align: right;
 		background-color: $questionBgc;
 		color: #FFF;
 		font-size: $fz-l;
 		margin-top: 150px;
+		padding-right: 48px;
 		p{
 			display: inline-block;
 			margin-bottom: 0;
 			margin-right: 8px;
 		}
 	}
+}
+
+// 結果
+.result{
+	.feature-header{
+		position: relative;
+		height: 440px;
+		background-image: url('https://images.unsplash.com/photo-1581508525585-04ea0dcd91d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+		padding: 24px 255px;
+	}
+	.feature-nav{
+		display: flex;
+		justify-content: space-between;
+	}
+	.feature-title{
+		a{
+			color: #fff;
+			text-decoration: none;
+			p{
+				margin-bottom: 0;
+				font-weight: bold;
+			}
+			span{
+				font-size: 12px;
+			}
+		}
+	}
+	.feature-five{
+		ul{
+			display: flex;
+			li{
+				margin-left: 48px;
+				a{
+					text-decoration: none;
+					color: #fff;
+					padding: 5px 0;
+					display: block;
+				}
+			}
+		}
+	}
+	.active{
+		border-bottom: 4px solid $questionBgc;
+	}
+	.feature-des{
+		position: absolute;
+		bottom: 24px;
+		display: flex;
+		.des{
+			width: 200px;
+			color: #fff;
+			font-size: 48px;
+			p{
+				font-size: $fz-m;
+			}
+		}
+		.des-content{
+			width: 450px;
+			p{
+				color: #FFFFFFDE;
+				padding: 0 25px;
+			}
+		}
+	}
+}
+.result-content{
+	.content{
+		padding: 40px 255px;
+		h2{
+			font-size: $fz-xl;
+			margin: 15px 0;
+		}
+		p{
+			max-width: 810px;
+			font-size: 20px;
+		}
+		span{
+			font-size: $fz-m;
+			font-weight: bold;
+			color: $questionBgc;
+		}
+	}
+		a{
+			position: absolute;
+			right:	270px;
+			bottom: 100px;
+			text-decoration: none;
+			font-size: $fz-l;
+			margin-top: 50px;
+			span{
+				color: #000;
+				margin-right: 8px;
+			}
+		}
 }

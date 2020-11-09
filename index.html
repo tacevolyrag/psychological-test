@@ -29,27 +29,95 @@
 			</div>
 		</div>
 		<!-- 測驗後題目開始 -->
-		<div class="question" v-else-if="pageNum === 1">
-			<div class="row" v-for="question in questionList" :key="question.id">
-				<div class="col-md-6 question__area">
-					<button type="button" class="btn" @click="pageNum -= 1"><i class="fas fa-arrow-left"></i></button>
-					<div class="question__topic">
-						<h2>Q</h2>
-						<h3>{{ question.problem }}</h3>
-					</div>
-				</div>
-				<div class="col-md-6 mt-auto">
-					<div class="question__option">
-						<div class="d-flex flex-column">
-							<label v-for="(option,idx) in question.options" :key="option.description + idx">
-								<input type="radio" :value="option.fraction" :name="question.id">
-								<span>{{ option.description }}</span>
-							</label>
+		<div class="question" v-else-if="pageNum >= 1 && pageNum <= 10">
+			<div class="container-fluid" v-for="(question,idx) in questionList" :key="question.id">
+				<div class="row" v-if="pageNum === (idx + 1)">
+					<div class="col-md-6 question__area">
+						<button type="button" class="btn" @click="pageNum -= 1"><i class="fas fa-arrow-left"></i></button>
+						<div class="question__topic">
+							<h2>Q</h2>
+							<h3>{{ question.problem }}</h3>
 						</div>
 					</div>
-					<button type="button" class="btn nextQuestion">
-						<p>下一題</p><i class="fas fa-arrow-right"></i>
-					</button>
+					<div class="col-md-6 question__option pr-0">
+						<div class="qaNum">
+							<span>{{ pageNum }}/10</span>
+						</div>
+						<div class="d-flex flex-column option">
+							<label v-for="(option) in question.options" :key="option.description">
+								<input type="radio" :value="option.fraction" :name="question.id" v-model="question.score">
+								<span>{{ option.description }}</span>
+							</label>
+							<button type="button" v-if="pageNum >= 1 && pageNum <=9" class="btn nextQuestion"
+								@click="toNextPage(question.score)" tabindex="0" data-trigger="focus" data-toggle="popover"
+								data-placement="top" data-content="請選出一個適合你的選項吧！">
+								<p>下一題</p><i class="fas fa-arrow-right"></i>
+							</button>
+							<button type="button" v-else class="btn nextQuestion" @click="toNextPage" tabindex="0"
+								data-trigger="focus" data-toggle="popover" data-placement="top" data-content="請選出一個適合你的選項吧！">
+								<p>看結果</p><i class="fas fa-arrow-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 心理測驗結果 -->
+		<div class="result" v-else>
+			<div class="feature-header">
+				<div class="feature-nav">
+					<div class="feature-title">
+						<a href="#" @click.prevent="reset">
+							<p>{{ name.zh }}</p>
+							<span>{{ name.en }}</span>
+						</a>
+					</div>
+					<div class="feature-five">
+						<ul>
+							<li v-for="(name,key,idx) in fiveFeatureScore" :key="name.namezh">
+								<a href="#" :class="{ active: result === idx }" @click.prevent="result = idx">
+									{{ name.namezh }}
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="feature-des" v-for="(name,key,idx) in fiveFeatureScore" :key="name.namezh">
+					<div class="d-flex" v-if="idx === result">
+						<div class="des">
+							<h2>{{ name.namezh }}</h2>
+							<p>{{ name.nameen }}</p>
+						</div>
+						<div class="des-content">
+							<p>{{ name.description }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="result-content" v-for="(name,key,idx) in fiveFeatureScore" :key="name.namezh">
+				<div class="d-flex content" v-if="idx === result">
+					<div v-if="name.score > degree.high">
+						<h2>高</h2>
+						<p>{{ name.high }}</p>
+					</div>
+					<div v-else-if="name.score < degree.low">
+						<h2>低</h2>
+						<p>{{ name.low }}</p>
+					</div>
+					<div v-else="name.score = degree.middle">
+						<h2>中</h2>
+						<p>{{ name.middle }}</p>
+						<p><span>高：</span><br>{{ name.high }}</p>
+						<p><span>低：</span><br>{{ name.low }}</p>
+					</div>
+					<div>
+						<a href="#" v-if="result < traits.en.length -1" @click.prevent="result += 1">
+							<span>下一項：{{ traits.zh[idx + 1] }}</span>
+							<i class="fas fa-arrow-right"></i></a>
+						<a href="#" v-if="result === traits.en.length -1" @click.prevent="reset"><b>再測一次</b></span>
+							<i class="fas fa-arrow-right"></i></a>
+					</div>
 				</div>
 			</div>
 		</div>
