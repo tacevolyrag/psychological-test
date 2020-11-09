@@ -21,7 +21,6 @@ var app = new Vue({
 					this.description = res.data.description;
 					this.traits = res.data.traits;
 					this.degree = res.data.degree;
-
 					this.traits.en.forEach((sort) => {
 						// 五個方面屬性題目存放在 problemList
 						res.data.problemList[sort].problems.forEach((problem) => {
@@ -47,16 +46,16 @@ var app = new Vue({
 		},
 		toNextPage(score) {
 			if (score === undefined) {
-					$('.nextQuestion').popover('show');
+				$('.nextQuestion').popover('show');
 			} else {
 				this.pageNum += 1;
-				if(this.pageNum > 10){
+				if (this.pageNum > 10) {
 					this.resultScore();
 				}
 			}
 		},
 		resultScore() {
-			this.traits.en.forEach((feature,idx) => {
+			this.traits.en.forEach((feature, idx) => {
 				this.questionList.forEach((question) => {
 					if (feature === question.category) {
 						this.fiveFeatureScore[feature].score += question.score;
