@@ -16,7 +16,6 @@ var app = new Vue({
 		getApi() {
 			axios.get(this.api)
 				.then((res) => {
-					console.log(res.data)
 					this.name = res.data.name;
 					this.description = res.data.description;
 					this.traits = res.data.traits;
@@ -46,7 +45,6 @@ var app = new Vue({
 		},
 		toNextPage(score) {
 			if (score === undefined || score === 0) {
-				console.log(document.body.clientWidth);
 				if(document.body.clientWidth > 767) {
 					$('.nextQuestion').popover('show');
 				} else {
