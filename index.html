@@ -53,7 +53,7 @@
 								data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>下一題</p><i class="fas fa-arrow-right"></i>
 							</button>
-							<button type="button" v-else class="btn nextQuestion" @click="toNextPage" tabindex="0"
+							<button type="button" v-else class="btn nextQuestion" @click="toNextPage(question.score)" tabindex="0"
 								data-trigger="focus" data-toggle="popover" data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>看結果</p><i class="fas fa-arrow-right"></i>
 							</button>

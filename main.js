@@ -45,7 +45,7 @@ var app = new Vue({
 				})
 		},
 		toNextPage(score) {
-			if (score === undefined) {
+			if (score === undefined || score === 0) {
 				$('.nextQuestion').popover('show');
 			} else {
 				this.pageNum += 1;
