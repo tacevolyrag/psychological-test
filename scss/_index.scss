@@ -313,7 +313,7 @@ $phone-media: 767px;
 }
 @media screen and (max-width: $phone-media){
 	.header{
-		height: 40vh;
+		height: 30vh;
 	}
 	.title{
 		margin-left: 0;
@@ -387,9 +387,9 @@ $phone-media: 767px;
 			}
 		}
 		.nextQuestion{
+			position: fixed;
+			bottom: 0;
 			margin-top: 0px;
-			// position: fixed;
-			// bottom: 0;
 			width: 100%;
 			font-size: 22px;
 		}
