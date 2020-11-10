@@ -45,10 +45,13 @@ var app = new Vue({
 		},
 		toNextPage(score) {
 			if (score === undefined || score === 0) {
-				if(document.body.clientWidth > 767) {
+				if (document.body.clientWidth > 767) {
 					$('.nextQuestion').popover('show');
 				} else {
-					alert('請輸入適合你的選項唷！');
+					setTimeout(() => {
+						alert('請輸入適合你的選項唷！');
+					}, 0)
+
 				};
 			} else {
 				this.pageNum += 1;
