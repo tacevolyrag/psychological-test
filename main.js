@@ -46,8 +46,12 @@ var app = new Vue({
 		},
 		toNextPage(score) {
 			if (score === undefined || score === 0) {
-				Popper.Defaults.modifiers.flip.enabled = false;
-				$('.nextQuestion').popover('show');
+				console.log(document.body.clientWidth);
+				if(document.body.clientWidth > 767) {
+					$('.nextQuestion').popover('show');
+				} else {
+					alert('請輸入適合你的選項唷！');
+				};
 			} else {
 				this.pageNum += 1;
 				if (this.pageNum > 10) {

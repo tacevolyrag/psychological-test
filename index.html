@@ -49,12 +49,12 @@
 								<span>{{ option.description }}</span>
 							</label>
 							<a href="#" v-if="pageNum >= 1 && pageNum <=9" class="btn nextQuestion"
-								@click.prevent="toNextPage(question.score)" tabindex="0" data-trigger="click" data-toggle="popover"
+								@click.prevent="toNextPage(question.score)" tabindex="0" data-trigger="focus" data-toggle="popover"
 									data-container="body" data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>下一題</p><i class="fas fa-arrow-right"></i>
 							</a>
 							<a href="#" v-else class="btn nextQuestion" @click="toNextPage(question.score)" tabindex="0"
-								data-container="body" data-trigger="click" data-toggle="popover" data-placement="top" data-content="請選出一個適合你的選項吧！">
+								data-container="body" data-trigger="focus" data-toggle="popover" data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>看結果</p><i class="fas fa-arrow-right"></i>
 						</a>
 						</div>
