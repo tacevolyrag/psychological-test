@@ -46,6 +46,7 @@ var app = new Vue({
 		},
 		toNextPage(score) {
 			if (score === undefined || score === 0) {
+				Popper.Defaults.modifiers.flip.enabled = false;
 				$('.nextQuestion').popover('show');
 			} else {
 				this.pageNum += 1;
