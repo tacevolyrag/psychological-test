@@ -48,15 +48,15 @@
 								<input type="radio" :value="option.fraction" :name="question.id" v-model="question.score">
 								<span>{{ option.description }}</span>
 							</label>
-							<button type="button" v-if="pageNum >= 1 && pageNum <=9" class="btn nextQuestion"
-								@click="toNextPage(question.score)" tabindex="0" data-trigger="focus" data-toggle="popover"
+							<a href="#" v-if="pageNum >= 1 && pageNum <=9" class="btn nextQuestion"
+								@click.prevent="toNextPage(question.score)" tabindex="0" data-trigger="focus" data-toggle="popover"
 								data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>下一題</p><i class="fas fa-arrow-right"></i>
-							</button>
-							<button type="button" v-else class="btn nextQuestion" @click="toNextPage(question.score)" tabindex="0"
+							</a>
+							<a href="#" v-else class="btn nextQuestion" @click="toNextPage(question.score)" tabindex="0"
 								data-trigger="focus" data-toggle="popover" data-placement="top" data-content="請選出一個適合你的選項吧！">
 								<p>看結果</p><i class="fas fa-arrow-right"></i>
-							</button>
+						</a>
 						</div>
 					</div>
 				</div>
